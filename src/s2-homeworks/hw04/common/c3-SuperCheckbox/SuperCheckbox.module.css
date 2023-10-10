@@ -29,7 +29,6 @@
 
 .checkbox:checked {
     appearance: none;
-
     background-image: url('checked.svg');
     /*background: #99ff99;*/
 }

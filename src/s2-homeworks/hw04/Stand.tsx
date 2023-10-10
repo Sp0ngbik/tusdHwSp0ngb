@@ -60,7 +60,7 @@ const Stand = () => {
                         xType={'red'}
                         disabled
                     >
-                        disabled
+                        Не активна
                     </SuperButton>
                 </div>
                 {/*задизэйбленная кнопка:*/}

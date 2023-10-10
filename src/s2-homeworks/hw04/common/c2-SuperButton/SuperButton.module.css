@@ -1,16 +1,30 @@
 .button {
+    width: 150px;
+    height: 30px;
+    border-radius: 3px;
+    font-size: 14px;
+    border: 1px solid black;
 }
 
 .disabled {
+    background-color: rgba(0, 77, 153, 1);
+    color: rgba(0, 46, 92, 1);
+    opacity: 50%;
 }
 
 .secondary {
+    background-color: rgba(201, 229, 255, 1);
+    color: rgba(0, 102, 204, 1);;
 }
 
 .default {
+    background-color: rgba(0, 89, 178, 1);
+    color: #fff;
 }
 
 .red {
+    background-color: rgba(178, 18, 50, 1);
+    color: #fff;
 }
 
 .default:hover {
