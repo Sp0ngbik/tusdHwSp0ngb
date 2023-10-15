@@ -8,10 +8,10 @@
 .textarea {
     resize: none;
     width: 900px;
-    height: 350px;
     margin: 0 82px 0 0;
     padding: 12px 20px 12px;
     font-size: 14px;
+    min-height: 200px;
     font-family: Montserrat;
     overflow: hidden;
     outline: none;
