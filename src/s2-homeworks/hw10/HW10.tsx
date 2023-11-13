@@ -9,7 +9,7 @@ import {AppStoreType} from "./bll/store";
 /*
 * 1 - в файле loadingReducer.ts дописать типы и логику
 * 2 - получить isLoading из редакса
-* 3 - дописать функцию setLoading
+* 3 - дописать функцию setLoading.....
 * 4 - сделать стили в соответствии с дизайном
 * */
 
