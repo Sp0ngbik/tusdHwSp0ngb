@@ -49,7 +49,7 @@
 }
 
 .button:disabled {
-    background-color: #3a88cc;
+    background-color:red;
 }
 
 

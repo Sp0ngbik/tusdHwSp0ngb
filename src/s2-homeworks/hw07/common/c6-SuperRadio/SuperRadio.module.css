@@ -1,15 +1,16 @@
 .radio {
+    accent-color: black;
+    margin: 0 2px 0;
 }
 
-.radio::before {
-}
-
-
-.radio:checked::before {
-}
 
 .label {
+    display: block;
+    cursor: pointer;
+    font-size: 18px;
 }
 
 .options {
+    display: flex;
+    flex-direction: column;
 }

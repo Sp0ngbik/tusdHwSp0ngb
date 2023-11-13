@@ -1,14 +1,30 @@
 .buttonsContainer {
+    color: black;
+}
+
+.buttonsContainer button {
+    font-size: 25px;
+    color: black;
+}
+
+.buttonsContainer button:disabled {
+    color: red;
+
 }
 
 .clock {
+    color: black;
+
 }
 
 .watch {
+    font-size: 25px;
 }
 
 .watch strong {
+    color: black;
 }
 
 .more {
+    color: black;
 }
