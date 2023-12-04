@@ -14,6 +14,14 @@ import errorUnknown from './images/error.svg'
 * 3 - сделать стили в соответствии с дизайном
 * */
 
+type T_Response = {
+    info: string,
+    errorText: string,
+    yourBody: {
+        success: boolean
+    }
+}
+
 const HW13 = () => {
     const [code, setCode] = useState('')
     const [text, setText] = useState('')
@@ -31,24 +39,41 @@ const HW13 = () => {
         setText('')
         setInfo('...loading')
 
-        axios
-            .post(url, {success: x})
+        axios.post<T_Response>(url, {success: x})
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
+                setText(res.data.errorText)
+                setInfo(res.data.info)
                 // дописать
-
             })
             .catch((e) => {
-                // дописать
-
+                if (e.isAxiosError) {
+                    if (e.response.status === 500) {
+                        setCode('Код 500!')
+                        setImage(error500)
+                        setText(e.response.data.errorText)
+                        setInfo(e.response.data.info)
+                    } else if (
+                        e.response.status === 400
+                    ) {
+                        setCode('Код 400!')
+                        setImage(error400)
+                        setText(e.response.data.errorText)
+                        setInfo(e.response.data.info)
+                    } else {
+                        setCode('Error!')
+                        setImage(errorUnknown)
+                        setText(e.message)
+                        setInfo(e.name)
+                    }
+                }
             })
     }
 
     return (
         <div id={'hw13'}>
             <div className={s2.hwTitle}>Homework #13</div>
-
             <div className={s2.hw}>
                 <div className={s.buttonsContainer}>
                     <SuperButton
@@ -56,6 +81,7 @@ const HW13 = () => {
                         onClick={send(true)}
                         xType={'secondary'}
                         // дописать
+                        disabled={!code}
 
                     >
                         Send true
@@ -64,6 +90,8 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
+                        disabled={!code}
+
                         // дописать
 
                     >
@@ -73,6 +101,8 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
+                        disabled={!code}
+
                         // дописать
 
                     >
@@ -82,6 +112,8 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
+                        disabled={!code}
+
                         // дописать
 
                     >
