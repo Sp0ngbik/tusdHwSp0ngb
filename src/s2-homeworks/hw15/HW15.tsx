@@ -51,20 +51,28 @@ const HW15 = () => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
-                // делает студент
-
-                // сохранить пришедшие данные
-
-                //
-            })
+                    // делает студент
+                    if (res?.data) {
+                        setTechs(res.data.techs)
+                        setTotalCount(params.count ? Math.ceil(res.data.totalCount / params.count) : Math.ceil(res.data.totalCount / 10))
+                    }
+                    // сохранить пришедшие данные
+                    //
+                }
+            ).finally(() => {
+            setLoading(false)
+        })
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
+        // console.log(newPage, newCount)
         // делает студент
-
+        setPage(newPage)
+        setCount(newCount)
         // setPage(
         // setCount(
-
+        sendQuery({page: newPage, count: newCount, sort})
+        // setSearchParams(JSON.stringify({page: newPage, count: newCount, sort}))
         // sendQuery(
         // setSearchParams(
 
@@ -72,11 +80,13 @@ const HW15 = () => {
     }
 
     const onChangeSort = (newSort: string) => {
+        setSort(newSort)
+        setPage(1)
         // делает студент
-
         // setSort(
         // setPage(1) // при сортировке сбрасывать на 1 страницу
-
+        sendQuery({page, count, sort: newSort})
+        // setSearchParams(JSON.stringify({page, count, sort: newSort}))
         // sendQuery(
         // setSearchParams(
 
@@ -103,11 +113,15 @@ const HW15 = () => {
     ))
 
     return (
-        <div id={'hw15'}>
+        <div id={'hw15'} className={s.hw15Block}>
             <div className={s2.hwTitle}>Homework #15</div>
 
             <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+                {idLoading && <div id={'hw15-loading'} className={s.loading}>
+                    <img
+                        alt={'loader not found'}
+                        src={'https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87.gif'}/>
+                </div>}
 
                 <SuperPagination
                     page={page}
